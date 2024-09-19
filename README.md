@@ -1,5 +1,11 @@
 # greetingCSM
-Greeting CSM for Minetest Linux-Forks Server
+Greeting Client Side Mod for Minetest Linux-Forks Server
+
+This allows for automatic greetings that check to see if another player submitted a welcome greeting
+already. Also, there is built in delay so that the welcome greeting doesn't get spammy with a cool down
+period. Additionally, there is a randomized delay for greeting when a new player joins.
+
+This CSM is dependent on the xban server mod and it checks for that the new player joins string.
 
 ## Installation
 First, change directory to your minetest directory:
