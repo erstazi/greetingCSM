@@ -22,11 +22,6 @@ Next, edit **clientmods/mods.conf** and add the following at the end:
 load_mod_greeting = true
 ```
 
-Optional: In **init.lua**, change the color to your favorite text color or what you use in colour_chat mod:
-```
-greeting.MY_COLOR = "#CCFFFF"
-```
-
 Then restart your client.
 
 
