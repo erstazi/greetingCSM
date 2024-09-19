@@ -15,6 +15,7 @@ Next, clone the repo to clientmods directory as follows:
 ```
 git clone https://github.com/erstazi/greetingCSM ./clientmods/greeting
 ```
+Note: it is best that the directory was named *greeting* in your clientmods directory.
 
 Next, edit **clientmods/mods.conf** and add the following at the end:
 ```
@@ -56,7 +57,7 @@ Reset:
 
 Full list of commands:
 ```
-.setgreet [0|1|on|off|enable|disable|reset|status]
+.setgreet [0|1|on|off|enable|disable|reset|debug|status]
 ```
 
 ### Intro (e.g. greeting)
@@ -65,12 +66,16 @@ Simplest command. Your default language used. Change *greeting.default_lang* fro
 ```
 .intro username
 ```
-or switch the language to do a greeting. 
+or switch the language to do a greeting.
 ```
 .intro de username
 ```
 
 Or override the message timeout/delay:
+```
+.intro de username override
+```
+or
 ```
 .intro de username true
 ```
