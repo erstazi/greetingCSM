@@ -70,8 +70,7 @@ or switch the language to do a greeting.
 ```
 .intro de username
 ```
-
-Or override the message timeout/delay:
+or allow override of the timeout/delay to do a greeting.
 ```
 .intro de username override
 ```
