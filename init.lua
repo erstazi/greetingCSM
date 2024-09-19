@@ -212,10 +212,10 @@ minetest.register_chatcommand('setgreet', {
           local new_color = paramsTable[2]
           if new_color:len() == 7 then
             mod_storage:set_string("color", paramsTable[2])
-            greeting.print("Your color is " .. new_color .. ".")
+            greeting.print("Your color is now " .. new_color .. ".")
           elseif new_color:len() == 6 then
             mod_storage:set_string("color", "#" .. paramsTable[2])
-            greeting.print("Your color is #" .. new_color .. ".")
+            greeting.print("Your color is now #" .. new_color .. ".")
           else
             greeting.print("Please, set your color with a hex color like #FFFFFF.")
           end
