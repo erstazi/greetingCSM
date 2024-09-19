@@ -175,7 +175,7 @@ minetest.register_chatcommand('setgreet', {
         end
       end
 
-      return true,"setgreet [0|1|on|off|enable|disable|reset|status]"
+      return true,"setgreet [0|1|on|off|enable|disable|reset|debug|status]"
     end
   end,
 })
