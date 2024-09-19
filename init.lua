@@ -13,6 +13,7 @@ local mod_name = minetest.get_current_modname()
 local mod_storage = minetest.get_mod_storage()
 mod_storage:set_string("greeting","1")
 mod_storage:set_string("next","0")
+mod_storage:set_string("debug","0")
 
 local vc_version = "$Id: init.lua,v 1.0 2024-09-18 13:45:25 minetest Exp $"
 
@@ -51,6 +52,7 @@ end
 greeting.send_greeting = function(username, message, override)
   local now = minetest.get_us_time()
   local ref = mod_storage:get_string("next")
+  local debug = mod_storage:get_string("debug")
   local greetingSetting = mod_storage:get_string("greeting")
   local diff = ref - now
   ref = tonumber(ref) or 0
@@ -58,11 +60,11 @@ greeting.send_greeting = function(username, message, override)
     minetest.send_chat_message(minetest.get_color_escape_sequence(greeting.MY_COLOR) .. username .. ": " .. message)
     local wait_to_next = tostring(now + tonumber(greeting.delay) * 1000000)
     mod_storage:set_string("next", wait_to_next)
-    if greeting.debug == true then
+    if tonumber(debug) == 1 then
       greeting.print("Greeting - Wait: " .. wait_to_next)
     end
   else
-    if greeting.debug == true then
+    if tonumber(debug) == 1 then
       greeting.print("Cannot greet. Use override. Wait: " .. tostring(ref) .. " | Now: " .. tostring(now) .. " | Diff: " .. tostring(diff) )
     else
       greeting.print("Cannot greet. Use override.")
@@ -72,6 +74,7 @@ end
 
 greeting.check_if_greeting_can_be_done = function(message)
   local status = mod_storage:get_string("greeting")
+  local debug = mod_storage:get_string("debug")
   if status == "1" then
     local msg = minetest.strip_colors(message)
     local sp1 = msg:find("*** xban: New player", 1, true)
@@ -82,7 +85,7 @@ greeting.check_if_greeting_can_be_done = function(message)
       local now = minetest.get_us_time()
       local wait_to_next = tostring(now + greeting.delay * 1000000)
       mod_storage:set_string("next", wait_to_next)
-      if greeting.debug == true then
+      if tonumber(debug) == 1 then
         greeting.print("Greeting for new player has already done. - Wait: " .. wait_to_next)
       else
         greeting.print("Greeting for new player has already done. ")
@@ -136,6 +139,7 @@ minetest.register_chatcommand('setgreet', {
   params = '[(function)]',
   description = 'enable or disable greeting new players',
   func = function(param)
+    local debug = mod_storage:get_string("debug")
     if not param or param == "" or param == "status" then
       local statustext = mod_storage:get_string("greeting")
       if statustext == "0" then
@@ -153,11 +157,22 @@ minetest.register_chatcommand('setgreet', {
       if param == "0" or param == "off" or param == "disable" then
         mod_storage:set_string("greeting","0")
         mod_storage:set_string("next","0")
-        return true,"Greeting new players is disabled"
+        return true,"Greeting new players is disabled "
       end
       if param == "reset" then
         mod_storage:set_string("next","0")
-        return true,"Greeting wait time has been reset"
+        return true,"Greeting wait time has been reset "
+      end
+
+      if param == "debug" then
+        greeting.print(tostring(debug))
+        if tonumber(debug) == 1 then
+          mod_storage:set_string("debug","0")
+          return true,"Greeting debug has been disabled "
+        else
+          mod_storage:set_string("debug","1")
+          return true,"Greeting debug has been enabled "
+        end
       end
 
       return true,"setgreet [0|1|on|off|enable|disable|reset|status]"
@@ -198,7 +213,7 @@ minetest.register_chatcommand("intro", {
         greeting.print("For greeting, the override needs to be set to true ")
       end
     else
-      greeting.print("Please use command as: .intro username or .intro en username ")
+      greeting.print("Please use command as: .intro username or .intro en username or .intro en username override ")
     end
   end),
 })
