@@ -92,7 +92,7 @@ greeting.check_if_greeting_can_be_done = function(message)
 
     if sp1 and sp2 then
       local username = string.match(msg, "*** xban: New player (%S+) joined the game")
-      local randomDelay = math.random(1, 6)
+      local randomDelay = math.random(1, 5)
       minetest.after(randomDelay, function()
         greeting.send_greeting(username, greeting.data[greeting.default_lang], false)
       end)
@@ -188,7 +188,7 @@ minetest.register_chatcommand("intro", {
       local lang = paramsTable[1]
       local username = paramsTable[2]
       local override = paramsTable[3]
-      if override == "true" then
+      if override == "true" or override == "override" then
         if greeting.data[lang] ~= nil then
           greeting.send_greeting(username, greeting.data[lang], true)
         else
