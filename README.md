@@ -50,6 +50,16 @@ Status:
 .setgreet status
 ```
 
+Set your favorite text color:
+```
+.setgreet color #CCFFFF
+```
+
+See what your text color is currently:
+```
+.setgreet color
+```
+
 Reset:
 ```
 .setgreet reset
@@ -57,7 +67,7 @@ Reset:
 
 Full list of commands:
 ```
-.setgreet [0|1|on|off|enable|disable|reset|debug|status]
+.setgreet [0|1|on|off|enable|disable|reset|debug|color|status|help]
 ```
 
 ### Intro (e.g. greeting)
