@@ -54,6 +54,21 @@ greeting.print = function(text)
   minetest.display_chat_message(greeting.modname .. ": " .. text)
 end
 
+-- greeting.random = function()
+  -- tonumber(string.format("%.3f", exact))
+  -- return min + math.random() * (max - min)
+-- end
+
+greeting.round = function(num, n)
+  local multiplier = 10 ^ n
+  return math.floor(num * multiplier + 0.5) / multiplier
+end
+
+greeting.random = function(min, max)
+  local random_number = min + math.random() * (max - min)
+  return greeting.round(random_number, 1)
+end
+
 greeting.split = function(parameter)
   local cmd = {}
   for word in string.gmatch(parameter, "[%w%-%:%.2f%_]+") do
@@ -109,7 +124,7 @@ greeting.check_if_greeting_can_be_done = function(message)
 
     if sp1 and sp2 then
       local username = string.match(msg, "*** xban: New player (%S+) joined the game")
-      local randomDelay = math.random(1, 5)
+      local randomDelay = greeting.random(1, 8)
       minetest.after(randomDelay, function()
         greeting.send_greeting(username, greeting.data[greeting.default_lang], false)
       end)
