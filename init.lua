@@ -47,8 +47,10 @@ greeting.data = {
   ["en"] = "Welcome to Linux-Forks! Please, read the rules at https://li-fo.de/rules ! If you would like a free apartment with free food (take as you need) then type /phw ",
   ["de"] = "Willkommen bei Linux-Forks! Bitte lesen Sie die Regeln unter https://li-fo.de/rules-de ! Wenn Sie eine freie Wohnung mit kostenlosem Essen wünschen, dann verwenden Sie den Befehl: /phw ",
   ["es"] = "¡Bienvenido a Linux-Forks! Por favor, lee las reglas en https://li-fo.de/rules-es antes de continuar. Si deseas un apartamento gratuito con comida gratis (toma lo que necesites), escribe /phw ",
+  ["pt"] = "Bem-vindo ao Linux-Forks! Por favor, leia as regras em https://li-fo.de/rules antes de continuar. Se deseja um apartamento gratuito com comida grátis (pegue o que precisar), escreva /phw ",
   ["ru"] = "Добро пожаловать на Linux-Forks! Пожалуйста, прочтите правила на https://li-fo.de/rules-ru ! Если вы хотите бесплатное жилье с бесплатной едой (берите сколько вам нужно), то введите /phw ",
-  ["hu"] = "Üdvözöllek a Linux-Forks szerveren! Kérlek, olvasd el a szabályokat itt: https://li-fo.de/rules ! Ha szeretnél egy ingyenes lakást ingyenes élelmiszerrel (vegyél annyit, amennyit szükségesnek találsz), akkor írd be a /phw parancsot !",
+  ["hu"] = "Üdvözöllek a Linux-Forks szerveren! Kérlek, olvasd el a szabályokat itt: https://li-fo.de/rules ! Ha szeretnél egy ingyenes lakást ingyenes élelmiszerrel (vegyél annyit, amennyit szükségesnek találsz), akkor írd be a /phw parancsot ",
+  ["tr"] = "Linux-Forks'a hoş geldiniz! Lütfen devam etmeden önce https://li-fo.de/rules adresindeki kuralları okuyun. Ücretsiz bir daire ve ücretsiz yiyecek (ihtiyacınız olanı alın) istiyorsanız, /phw yazın ",
 }
 greeting.print = function(text)
   minetest.display_chat_message(greeting.modname .. ": " .. text)
