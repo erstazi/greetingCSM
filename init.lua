@@ -126,7 +126,9 @@ greeting.check_if_greeting_can_be_done = function(message)
 
     if sp1 and sp2 then
       local username = string.match(msg, "*** xban: New player (%S+) joined the game")
-      local randomDelay = greeting.random(1, 8)
+      local firstDelay = greeting.random(1, 8)
+      local secondDelay = greeting.random(1, 5)
+      local randomDelay = firstDelay + secondDelay
       minetest.after(randomDelay, function()
         greeting.send_greeting(username, greeting.data[greeting.default_lang], false)
       end)
